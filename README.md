@@ -1,16 +1,23 @@
 # counter_cubit_unit_testing
 
-A new Flutter project.
+1. Set up the project by adding bloc_test and flutter_bloc packages in pubspec.yaml. Run the command to install them.
 
-## Getting Started
+2. Create the CounterCubit, which is a class that extends Cubit and controls a counter with increment and decrement methods. The initial state is zero.
 
-This project is a starting point for a Flutter application.
+3. In the test directory, create a file to write unit tests for CounterCubit.
 
-A few resources to get you started if this is your first Flutter project:
+4. Declare a CounterCubit variable using the `late` keyword, allowing initialization later in the setup for each test.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+5. Use setup and teardown functions to initialize and close CounterCubit before and after each test. In setup, create a new instance of CounterCubit, and in teardown, close the cubit to release resources.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+6. Group all tests related to CounterCubit together for readability.
+
+7. Write a test to check if the initial state of CounterCubit is zero, using `expect` to verify that the state is zero at the start.
+
+8. Use blocTest for increment and decrement. Each blocTest has several parts:
+   - Specify the cubit and state type (CounterCubit with an integer state)
+   - Build: supply the instance of CounterCubit created in setup
+   - Act: define the action to perform on CounterCubit, like calling increment
+   - Expect: define the expected output state after the action. For example, if calling increment, the expected state would be one; if calling decrement, the expected state would be negative one.
+
+9. Build creates the CounterCubit instance, act performs the action, and expect checks if the resulting state matches the expected value after the action.
