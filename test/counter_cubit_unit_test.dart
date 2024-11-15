@@ -44,8 +44,13 @@ void main() {
     blocTest(
       "CounterCubit Decrement Test",
       build: () => counterCubit,
-      act: (bloc) => bloc.decrement(),
-      expect: () => [-1],
+      act: (bloc) {
+        bloc.decrement();
+        bloc.decrement();
+      },
+      expect: () => [-1, -2],
+      //! The list [-1, -2] indicates that the BLoC is expected to emit two state,
+      //! and that state should be -1 and -2.
       verify: (bloc) => counterCubit.decrement,
     );
   });
@@ -61,11 +66,7 @@ void main() {
 //! to check or validate that the function increment exists or was triggered,
 //! but it is not actually executing the function.
 
-
 //! act: (bloc) => bloc.increment(),
 
 //! Here, bloc.increment() calls the increment function immediately because of
 //! the parentheses (). This actually invokes the function during the act step.
-
-
-
