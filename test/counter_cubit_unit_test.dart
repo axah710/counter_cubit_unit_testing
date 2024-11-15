@@ -41,10 +41,31 @@ void main() {
         //! complete. Here, it verifies that increment was indeed called on the
         //! counterCubit.
         );
-    blocTest("CounterCubit Decrement Test",
-        build: () => counterCubit,
-        act: (bloc) => bloc.decrement(),
-        expect: () => [-1],
-        verify: (bloc) => counterCubit.decrement);
+    blocTest(
+      "CounterCubit Decrement Test",
+      build: () => counterCubit,
+      act: (bloc) => bloc.decrement(),
+      expect: () => [-1],
+      verify: (bloc) => counterCubit.decrement,
+    );
   });
 }
+
+//! Note:-
+
+//! verify: (bloc) => counterCubit.increment
+
+//! In this case, counterCubit.increment is being passed as a reference to the
+//! function increment. The absence of parentheses () means we are passing the
+//! function itself as a callback or a reference. This allows the verify step
+//! to check or validate that the function increment exists or was triggered,
+//! but it is not actually executing the function.
+
+
+//! act: (bloc) => bloc.increment(),
+
+//! Here, bloc.increment() calls the increment function immediately because of
+//! the parentheses (). This actually invokes the function during the act step.
+
+
+
